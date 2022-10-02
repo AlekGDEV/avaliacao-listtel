@@ -7,18 +7,52 @@ body{
     width:100vw;
     height:100vh;
     background-color: #CDD9FF;
+    position: fixed;
 }
 
 .nav-content{
-    background-color: #809EFF;
-    min-height: 95vh;
+    background-color: #7F9EFF;
+    min-height: 85vh;
     min-width: 20vw;
     box-shadow: 9px 9px 4px #A7BCFF;
+}
+
+.input-form{
+    outline:none;
+}
+
+.input-form::placeholder {
+    padding: 1rem;
+    
+}
+
+.scroll-list{
+    height: 83vh;
+    overflow-y: auto;
 }
 
 li{
     list-style: none;
 }
+
+.list-button{
+    border-radius: 5vh;
+}
+
+.span-align1{
+    position: relative;
+    top:3px;
+}
+.span-align2{
+    position: relative;
+    bottom:3px;
+    left: 5px;
+}
+
+.card-contact{
+    box-shadow: 9px 9px 4px #A7BCFF;
+}
+
 
 /* .main-content{
     margin-top: 4rem;
