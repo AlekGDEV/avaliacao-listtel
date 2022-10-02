@@ -1,13 +1,15 @@
 const API_URL = "http://localhost:8000"
 
-function add() {
+function add(){
   event.preventDefault();
 
   let newcontact = {
-    name: name.value,
-    number: parseInt(number.value),
-    address: 
+    name: n.value,
+    number: number.value,
+    address: address.value,
   };
+
+  console.log(newcontact)
 
   fetch(`${API_URL}/contacts/`, {
     method: 'POST',
@@ -17,7 +19,7 @@ function add() {
     }
   })
     .then(response => response.json())
-    .then(response => atualizar_lista());
+    .then(() => update());
 
   form_add.reset();
 }
@@ -34,7 +36,7 @@ function call(id) {
             <td class="material-icons">account_circle</td>
           </tr>
           <tr>
-            <td>${contact.nome}</td>
+            <td>${contact.name}</td>
           </tr>
          `
     })
@@ -51,8 +53,10 @@ function update() {
             <li class="d-grid me-2 ms-1">
               <button class="list-button btn btn-dark text-start mb-2" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onclick="call(${any_contact.id})">
                 <i class="d-none">${any_contact.id}</i>
+                <i class="d-none">${any_contact.number}</i>
+                <i class="d-none">${any_contact.address}</i>
                 <span class ="span-align1 material-icons">account_circle</span>
-                <span class="span-align2">${any_contact.nome}</span>
+                <span class="span-align2">${any_contact.name}</span>
               </button>
             <li>
           `;

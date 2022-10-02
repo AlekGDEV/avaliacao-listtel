@@ -26,17 +26,17 @@
                           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                          <form>
-                            <input type="text">
-                            <input type="text" maxlength="9">
-                            <input type="text">
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        <form onsubmit="add()" id="form_add"class="d-flex flex-column">
+                          <div class="modal-body">
+                            <input class="form-control mb-2" id="n" type="text">
+                            <input class="form-control mb-2" id="number" type="number">
+                            <input class="form-control" id="address" type="text">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-success">Adicionar</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
