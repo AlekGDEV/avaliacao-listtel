@@ -1,4 +1,13 @@
-const API_URL = "http://localhost:8000"
+const API_URL = "http://localhost:8000";
+// const bsCollapse = new bootstrap.Collapse('#collapseWidthExample', {
+//   toggle: false
+// });
+const collapseElementList = document.querySelectorAll('.collapse')
+// const collapseList = [...collapseElementList].map(collapseEl => {
+//   new bootstrap.Collapse(collapseEl)
+//   return collapseEl.show = false;
+// })
+
 
 // Create, Read, Update e Delete abaixo, respectivamente.
 // Delete por ser uma palavra reservada foi abreviado para del
@@ -41,7 +50,7 @@ function call(id) {
                   menu
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li><button class="dropdown-item text-warning font-monospace" onclick="edit()">Editar</button></li>
+                  <li><button class="dropdown-item text-warning font-monospace" onclick="edit()" data-bs-toggle="modal" data-bs-target="#edit_modal">Editar</button></li>
                   <li><button class="dropdown-item text-danger font-monospace" onclick="del(${contact.id})">Excluir</button></li>
                 </ul>
               </div>
@@ -72,15 +81,15 @@ function read() {
       contacts.map((any_contact) => {
         list.innerHTML +=
           `
-            <li class="d-grid me-2 ms-1">
-              <button class="list-button btn btn-dark text-start mb-2" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onclick="call(${any_contact.id})">
+            <li class="me-2 ms-1">
+              <button class="list-button btn btn-dark text-start w-100 mb-2" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onclick="call(${any_contact.id})">
                 <i class="d-none">${any_contact.id}</i>
                 <i class="d-none">${any_contact.number}</i>
                 <i class="d-none">${any_contact.address}</i>
                 <span class ="span-align1 material-icons">account_circle</span>
                 <span class="span-align2">${any_contact.name}</span>
               </button>
-            <li>
+            </li>
           `;
       })
     })
@@ -105,7 +114,6 @@ function edit(){
       .then(response => response.json())
       .then(() => atualizar_lista())
 
-  let x = document.querySelector('[data-bs-dismiss="offcanvas"]');
   x.dispatchEvent(new Event('click'));
 }
 
@@ -119,7 +127,11 @@ async function del(id){
   await fetch(`${API_URL}/contacts/${id}`,{
       method:'DELETE'
   });
-  update();
+
+  collapseElementList.forEach((collapse) =>{
+    collapse.classList.remove("show");
+  })
+  read();
 }
 
 read();
