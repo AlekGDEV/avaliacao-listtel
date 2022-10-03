@@ -1,58 +1,63 @@
-*{
-    margin:0;
-    padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    width:100vw;
-    height:100vh;
-    background-color: #CDD9FF;
-    position: fixed;
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #CDD9FF;
+  position: fixed;
 }
 
-.nav-content{
-    background-color: #7F9EFF;
-    min-height: 85vh;
-    min-width: 20vw;
-    box-shadow: 9px 9px 4px #A7BCFF;
+.nav-content {
+  background-color: #7F9EFF;
+  min-height: 85vh;
+  min-width: 20vw;
+  box-shadow: 9px 9px 4px #A7BCFF;
 }
 
-.input-form{
-    outline:none;
+.input-form {
+  outline: none;
 }
 
 .input-form::placeholder {
-    padding: 1rem;
-    
+  padding: 1rem;
+
 }
 
-.scroll-list{
-    height: 83vh;
-    overflow-y: auto;
+.scroll-list {
+  height: 83vh;
+  overflow-y: scroll;
 }
 
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
 
-.list-button{
-    border-radius: 5vh;
+.list-button {
+  border-radius: 5vh;
 }
 
-.span-align1{
-    position: relative;
-    top:3px;
-}
-.span-align2{
-    position: relative;
-    bottom:3px;
-    left: 5px;
+.span-align1 {
+  position: relative;
+  top: 3px;
 }
 
-.card-contact{
-    box-shadow: 9px 9px 4px #A7BCFF;
+.span-align2 {
+  position: relative;
+  bottom: 3px;
+  left: 5px;
 }
 
+.card-contact {
+  box-shadow: 9px 9px 4px #A7BCFF;
+}
+
+.icon {
+  width: 150px;
+  height: 150px;
+}
 
 /* .main-content{
     margin-top: 4rem;

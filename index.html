@@ -18,19 +18,19 @@
                     <button class="search-button border-0 material-icons" type="submit">search</button>
                 </form>
                 <div class="text-end">
-                  <button class="btn text-light fs-2 material-icons" data-bs-toggle="modal" data-bs-target="#exampleModal">add</button>
+                  <button class="btn text-light border-0 fs-2 material-icons" data-bs-toggle="modal" data-bs-target="#exampleModal">add</button>
                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">Adicionar contato:</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form onsubmit="add()" id="form_add"class="d-flex flex-column">
                           <div class="modal-body">
-                            <input class="form-control mb-2" id="n" type="text">
-                            <input class="form-control mb-2" id="number" type="number">
-                            <input class="form-control" id="address" type="text">
+                            <input class="form-control mb-2" id="n" type="text" placeholder="Nome">
+                            <input class="form-control mb-2" id="number" type="text" minlength="9" maxlength="11" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Numero">
+                            <input class="form-control" id="address" type="text" placeholder="Endereço">
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
@@ -48,20 +48,30 @@
                 </div>
 
             </nav>
-              <div class="mt-5 ms-5 me-1" style="min-height: 120px;">
+              <div class="mt-5 ms-5 me-1 d-flex" style="min-height: 120px;">
                 <div class="collapse collapse-horizontal" id="collapseWidthExample">
-                  <div class="card card-body card-contact d-flex border" style="background-color: #7F9EFF; min-height: 90vh; width: 74vw;">
-                    <table class="table text-center w-50">
+                  <div class="card card-body card-contact border " style="background-color: #7F9EFF; min-height: 90vh; width: 36vw;">
+                    <table class="table table-borderless text-center w-100">
                       <tbody id="tablecontact">
 
                       </tbody>
                     </table>
-                    <div>
-                      a
-                    </div>
                   </div>
                 </div>
               </div>
+
+              <div class="mt-5 ms-1 me-1 d-flex" style="min-height: 120px;">
+                <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                  <div class="card card-body card-contact border " style="background-color: #7F9EFF; min-height: 90vh; width: 36vw;">
+                    <table class="text-center w-100">
+                      <tbody>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
         </main>
 
 

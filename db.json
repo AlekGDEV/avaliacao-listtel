@@ -1,22 +1,10 @@
 {
   "contacts": [
     {
-      "name": "a",
-      "number": "1",
-      "address": "a",
-      "id": 1
-    },
-    {
-      "name": "a",
-      "number": "1",
-      "address": "fh",
-      "id": 2
-    },
-    {
       "name": "asa",
-      "number": "1",
-      "address": "assa",
-      "id": 3
+      "number": 85999481675,
+      "address": "fh",
+      "id": 1
     }
   ]
 }

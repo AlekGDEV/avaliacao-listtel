@@ -1,15 +1,13 @@
 const API_URL = "http://localhost:8000"
 
-function add(){
+function create(){
   event.preventDefault();
 
   let newcontact = {
     name: n.value,
-    number: number.value,
+    number: parseInt(number.value),
     address: address.value,
   };
-
-  console.log(newcontact)
 
   fetch(`${API_URL}/contacts/`, {
     method: 'POST',
@@ -19,7 +17,7 @@ function add(){
     }
   })
     .then(response => response.json())
-    .then(() => update());
+    .then(() => read());
 
   form_add.reset();
 }
@@ -32,17 +30,36 @@ function call(id) {
     .then((contact) => {
       tablecontact.innerHTML +=
         `
-          <tr>
-            <td class="material-icons">account_circle</td>
+          <tr class="text-end">
+            <td>
+              <div class="dropdown">
+                <button class="material-icons btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  menu
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><button class="dropdown-item text-warning font-monospace" onclick="edit()">Editar</button></li>
+                  <li><button class="dropdown-item text-danger font-monospace" onclick="delete()">Excluir</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <tr rowspan="2">
+            <td><img class="icon img-fluid rounded" src="./icon.png" alt=""></td>
           </tr>
           <tr>
             <td>${contact.name}</td>
           </tr>
-         `
+          <tr>
+            <td>${contact.number}</td>
+          </tr>
+          <tr>
+            <td>${contact.address}</td>
+          </tr>
+          `
     })
 }
 
-function update() {
+function read() {
   list.innerHTML = '';
   fetch(`${API_URL}/contacts`)
     .then((response) => response.json())
@@ -63,4 +80,4 @@ function update() {
       })
     })
 }
-update();
+read();
