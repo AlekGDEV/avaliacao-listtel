@@ -59,6 +59,12 @@ li {
   height: 150px;
 }
 
+.msg{
+  resize: none;
+  outline: none;
+  border: none;
+}
+
 /* .main-content{
     margin-top: 4rem;
     min-width: 75vw;

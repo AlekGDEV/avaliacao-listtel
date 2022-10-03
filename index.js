@@ -1,5 +1,9 @@
 const API_URL = "http://localhost:8000"
 
+// Create, Read, Update e Delete abaixo, respectivamente.
+// Delete por ser uma palavra reservada foi abreviado para del
+
+//Função que cria um novo contato para a lista
 function create(){
   event.preventDefault();
 
@@ -22,7 +26,7 @@ function create(){
   form_add.reset();
 }
 
-
+//Função que chama as informações especificas do contato escolhido
 function call(id) {
   tablecontact.innerHTML = '';
   fetch(`${API_URL}/contacts/${id}`)
@@ -38,7 +42,7 @@ function call(id) {
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li><button class="dropdown-item text-warning font-monospace" onclick="edit()">Editar</button></li>
-                  <li><button class="dropdown-item text-danger font-monospace" onclick="delete()">Excluir</a></li>
+                  <li><button class="dropdown-item text-danger font-monospace" onclick="del(${contact.id})">Excluir</button></li>
                 </ul>
               </div>
             </td>
@@ -59,6 +63,7 @@ function call(id) {
     })
 }
 
+// Função para atualizar e mostrar lista ao usuario
 function read() {
   list.innerHTML = '';
   fetch(`${API_URL}/contacts`)
@@ -80,4 +85,41 @@ function read() {
       })
     })
 }
+
+function edit(){
+  event.preventDefault();
+  
+  let newcontact = {
+    name: edit_n.value,
+    number: parseInt(edit_number.value),
+    address: edit_address.value,
+  };
+
+  fetch(`${API_URL}/compras/${edit_id.value}`, {
+      method:'PATCH',
+      body: JSON.stringify(newcontact),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+      .then(response => response.json())
+      .then(() => atualizar_lista())
+
+  let x = document.querySelector('[data-bs-dismiss="offcanvas"]');
+  x.dispatchEvent(new Event('click'));
+}
+
+// Função para deletar o contato.
+async function del(id){
+  let resposta = confirm('Você tem certeza?');
+  if(resposta !== true){
+      return;
+  }
+
+  await fetch(`${API_URL}/contacts/${id}`,{
+      method:'DELETE'
+  });
+  update();
+}
+
 read();
