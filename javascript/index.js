@@ -28,7 +28,6 @@ function create(){
 
 //Função que chama as informações especificas do contato escolhido
 function call(id) {
-  tablecontact.innerHTML = '';
   fetch(`${API_URL}/contacts/${id}`)
     .then(response => response.json())
     .then((contact) => {
@@ -42,7 +41,7 @@ function call(id) {
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li>
-                  <button class="dropdown-item text-warning font-monospace" data-bs-toggle="modal" data-bs-target="#edit_modal">Editar</button>
+                  <button class="dropdown-item text-warning font-monospace" onclick="buscar_peditar(${contact.id})" data-bs-toggle="modal" data-bs-target="#edit_modal">Editar</button>
                   </li>
                   <li><button class="dropdown-item text-danger font-monospace" onclick="del(${contact.id})">Excluir</button></li>
                 </ul>
@@ -89,7 +88,18 @@ function read() {
     });
 }
 
-function edit(){
+function buscar_peditar(id){
+  fetch(`${API_URL}/contacts/${id}`)
+      .then(response => response.json())
+      .then(newcontact => {
+          edit_id.value = newcontact.id;
+          edit_n.value = newcontact.name;
+          edit_number.value = newcontact.number;
+          edit_address.value = newcontact.address;
+      });
+}
+
+function update(){
   event.preventDefault();
   
   let newcontact = {    
@@ -98,7 +108,7 @@ function edit(){
     address: edit_address.value,
   };
 
-  fetch(`${API_URL}/contacts/${editid.value}`, {
+  fetch(`${API_URL}/contacts/${edit_id.value}`, {
       method:'PATCH',
       body: JSON.stringify(newcontact),
       headers: {
@@ -107,6 +117,7 @@ function edit(){
   })
       .then(response => response.json())
       .then(() => read())
+      .then(() => call())
 }
 
 // Função para deletar o contato.

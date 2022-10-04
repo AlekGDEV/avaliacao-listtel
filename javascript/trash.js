@@ -55,5 +55,9 @@ function remove_selectedtrash(){
         }
     });
 
+    collapseElementList.forEach((collapse) =>{
+        collapse.classList.remove("show");
+      })
+
     read();
 }
