@@ -1,22 +1,76 @@
 {
   "contacts": [
     {
-      "name": "alek",
-      "number": 11111111111,
-      "address": "adsdd",
+      "name": "Alexandre",
+      "number": 85999481675,
+      "address": "Rua Paraguaçu, 2005",
       "id": 1
     },
     {
-      "name": "asa",
-      "number": 11111111111,
-      "address": "adsdd",
+      "name": "Alexandre 2",
+      "number": 85987681224,
+      "address": "Rua Paraguaçu, 2005",
       "id": 2
     },
     {
-      "name": "alek",
+      "name": "Eliana",
       "number": 11111111111,
-      "address": "adsdd",
+      "address": "Rua Paraguaçu, 2005",
       "id": 3
+    },
+    {
+      "name": "Riquelme",
+      "number": 11111111111,
+      "address": "Rua Paraguaçu, 2005",
+      "id": 4
+    },
+    {
+      "name": "Núbia",
+      "number": 11111111111,
+      "address": "Rua Paraguaçu, 2005",
+      "id": 5
+    },
+    {
+      "name": "Chiquim",
+      "number": 22222222222,
+      "address": "Rua Paraguaçu, 2005",
+      "id": 6
+    },
+    {
+      "name": "Ney",
+      "number": 11111111111,
+      "address": "Rua Paraguaçu, 2005",
+      "id": 7
+    },
+    {
+      "name": "Padre Kelmon",
+      "number": 33333333333,
+      "address": "Rua Paraguaçu, 2005",
+      "id": 8
+    },
+    {
+      "name": "Sofia Manzano",
+      "number": 21212121212,
+      "address": "Rua Paraguaçu, 2005",
+      "id": 9
+    },
+    {
+      "name": "Lula",
+      "number": 13131313131,
+      "address": "Rua Paraguaçu, 2005",
+      "id": 10
+    },
+    {
+      "name": "Bonossauro",
+      "number": 44444444444,
+      "address": "Rua Paraguaçu, 2005",
+      "id": 11
+    },
+    {
+      "name": "Influencer do tiktok",
+      "number": 55555555555,
+      "address": "Rua Paraguaçu, 2005",
+      "id": 12
     }
   ]
 }

@@ -23,7 +23,14 @@ body {
 
 .input-form::placeholder {
   padding: 1rem;
+}
 
+.btn-trash{
+  display: none;
+}
+
+.btn-add{
+  padding-left: 16vw;
 }
 
 .scroll-list {
@@ -71,3 +78,25 @@ li {
     height: 88vh;
     background-color: #809EFF;
 } */
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffffff; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ededed; 
+}

@@ -81,7 +81,8 @@ function read() {
       contacts.map((any_contact) => {
         list.innerHTML +=
           `
-            <li class="me-2 ms-1">
+            <li class="d-flex me-2 ms-1">
+              <input onclick="trash(this)" class="me-2" type="checkbox" data-check="action" value="${any_contact.id}">
               <button class="list-button btn btn-dark text-start w-100 mb-2" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onclick="call(${any_contact.id})">
                 <i class="d-none">${any_contact.id}</i>
                 <i class="d-none">${any_contact.number}</i>
@@ -91,8 +92,8 @@ function read() {
               </button>
             </li>
           `;
-      })
-    })
+      });
+    });
 }
 
 function edit(){
@@ -112,7 +113,7 @@ function edit(){
       }
   })
       .then(response => response.json())
-      .then(() => atualizar_lista())
+      .then(() => read())
 
   x.dispatchEvent(new Event('click'));
 }
