@@ -51,13 +51,9 @@ function remove_selectedtrash(){
         if(any_check.checked === true){
             fetch(`${API_URL}/contacts/${any_check.value}`,{
                 method:'DELETE'
-            });
+            })
+            .then(() => read());
         }
-    });
-
-    collapseElementList.forEach((collapse) =>{
-        collapse.classList.remove("show");
-      })
-
     read();
+    });
 }

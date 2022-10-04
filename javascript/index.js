@@ -1,5 +1,6 @@
 const API_URL = "http://localhost:8000";
 const collapseElementList = document.querySelectorAll('.collapse');
+const x = document.querySelectorAll('[data-bs-dismiss="modal"]');
 // Create, Read, Update e Delete abaixo, respectivamente.
 // Delete por ser uma palavra reservada foi abreviado para del
 
@@ -24,10 +25,12 @@ function create(){
     .then(() => read());
 
   form_add.reset();
+  x.dispatchEvent(new Event('click'));
 }
 
 //Função que chama as informações especificas do contato escolhido
 function call(id) {
+  tablecontact.innerHTML = '';
   fetch(`${API_URL}/contacts/${id}`)
     .then(response => response.json())
     .then((contact) => {
@@ -108,16 +111,16 @@ function update(){
     address: edit_address.value,
   };
 
-  fetch(`${API_URL}/contacts/${edit_id.value}`, {
-      method:'PATCH',
-      body: JSON.stringify(newcontact),
-      headers: {
-          'Content-Type': 'application/json'
-      }
+    fetch(`${API_URL}/contacts/${edit_id.value}`, {
+    method:'PATCH',
+    body: JSON.stringify(newcontact),
+    headers: {
+        'Content-Type': 'application/json'
+    }
   })
-      .then(response => response.json())
-      .then(() => read())
-      .then(() => call())
+    .then( async response => response.json())
+    .then(() => read())
+    .then(() => call(edit_id.value))
 }
 
 // Função para deletar o contato.
@@ -138,3 +141,4 @@ async function del(id){
 }
 
 read();
+call();
