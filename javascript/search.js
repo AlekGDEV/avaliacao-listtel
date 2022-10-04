@@ -8,14 +8,14 @@ function search(){
             continue;
         }
 
-        let row = rows[position].children[0].children[4].innerText.toLowerCase();
-
+        let row = rows[position].children[1].children[4].innerText.toLowerCase();
+        console.log(row);
         if(row.includes(typing)){
             rows[position].style.display="";
         }else{
             rows[position].style.display="none";
         }
-        // if(rows[position].children[0].children[4].innerText.includes(typing)){
+        // if(rows[position].children[1].children[4].innerText.includes(typing)){
         //     rows[position].style.display = '';
             
         // }else{

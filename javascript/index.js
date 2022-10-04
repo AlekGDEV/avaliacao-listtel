@@ -1,14 +1,5 @@
 const API_URL = "http://localhost:8000";
-// const bsCollapse = new bootstrap.Collapse('#collapseWidthExample', {
-//   toggle: false
-// });
-const collapseElementList = document.querySelectorAll('.collapse')
-// const collapseList = [...collapseElementList].map(collapseEl => {
-//   new bootstrap.Collapse(collapseEl)
-//   return collapseEl.show = false;
-// })
-
-
+const collapseElementList = document.querySelectorAll('.collapse');
 // Create, Read, Update e Delete abaixo, respectivamente.
 // Delete por ser uma palavra reservada foi abreviado para del
 
@@ -50,7 +41,9 @@ function call(id) {
                   menu
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li><button class="dropdown-item text-warning font-monospace" onclick="edit()" data-bs-toggle="modal" data-bs-target="#edit_modal">Editar</button></li>
+                  <li>
+                  <button class="dropdown-item text-warning font-monospace" data-bs-toggle="modal" data-bs-target="#edit_modal">Editar</button>
+                  </li>
                   <li><button class="dropdown-item text-danger font-monospace" onclick="del(${contact.id})">Excluir</button></li>
                 </ul>
               </div>
@@ -99,13 +92,13 @@ function read() {
 function edit(){
   event.preventDefault();
   
-  let newcontact = {
+  let newcontact = {    
     name: edit_n.value,
     number: parseInt(edit_number.value),
     address: edit_address.value,
   };
 
-  fetch(`${API_URL}/compras/${edit_id.value}`, {
+  fetch(`${API_URL}/contacts/${editid.value}`, {
       method:'PATCH',
       body: JSON.stringify(newcontact),
       headers: {
@@ -114,14 +107,12 @@ function edit(){
   })
       .then(response => response.json())
       .then(() => read())
-
-  x.dispatchEvent(new Event('click'));
 }
 
 // Função para deletar o contato.
 async function del(id){
-  let resposta = confirm('Você tem certeza?');
-  if(resposta !== true){
+  let response = confirm('Você tem certeza?');
+  if(response !== true){
       return;
   }
 
