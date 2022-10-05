@@ -1,3 +1,6 @@
+// Alexandre Garcia Fernandes Filho
+
+//Função que realiza a pesquisa de acordo com caracteres presentes nos nomes listados.
 function search(){
     let typing = search_input.value.toLowerCase();
     let rows = list.getElementsByTagName('li');
@@ -13,11 +16,5 @@ function search(){
         }else{
             rows[position].classList.add('d-none');
         }
-        // if(rows[position].children[1].children[4].innerText.includes(typing)){
-        //     rows[position].style.display = '';
-            
-        // }else{
-        //     rows[position].style.display = 'none';
-        // }
     }
 }

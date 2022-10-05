@@ -1,10 +1,64 @@
+// Alexandre Garcia Fernandes Filho
+
+//Variaveis para a entrada de dados e metodos únicos.
 const API_URL = "http://localhost:8000";
 const collapseElementList = document.querySelectorAll('.collapse');
 const my_modal = new bootstrap.Modal(document.getElementById('exampleModal'))
+const my_modal2 = new bootstrap.Modal(document.getElementById('edit_modal'))
 
-// const x = document.querySelectorAll('[data-bs-dismiss="modal"]');
+//Função que chama as informações especificas do contato escolhido pelo botão presente na lista lateral.
+function profile(id) {
+  tablecontact.innerHTML = '';
+  fetch(`${API_URL}/contacts/${id}`)
+    .then(response => response.json())
+    .then((contact) => {
+      tablecontact.innerHTML +=
+        `
+          <tr class="text-end">
+            <td>
+              <div class="dropdown">
+                <button class="material-icons btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  menu
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                  <button class="dropdown-item text-warning font-monospace" onclick="get_toupdate(${contact.id})" data-bs-toggle="modal" data-bs-target="#edit_modal">Editar</button>
+                  </li>
+                  <li><button class="dropdown-item text-danger font-monospace" onclick="del(${contact.id})">Excluir</button></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <tr rowspan="2">
+            <td><img class="icon img-fluid rounded" src="./icon.png" alt=""></td>
+          </tr>
+          <tr>
+            <td>${contact.name}</td>
+          </tr>
+          <tr>
+            <td>${contact.number}</td>
+          </tr>
+          <tr>
+            <td>${contact.address}</td>
+          </tr>
+          `
+    })
+}
+
+//Função que vai buscar as informações do usuario individual após apertar no botão editar dentro do contato especifico.
+function get_toupdate(id){
+  fetch(`${API_URL}/contacts/${id}`)
+      .then(response => response.json())
+      .then(newcontact => {
+          edit_id.value = newcontact.id;
+          edit_n.value = newcontact.name;
+          edit_number.value = newcontact.number;
+          edit_address.value = newcontact.address;
+      });
+}
+
 // Create, Read, Update e Delete abaixo, respectivamente.
-// Delete por ser uma palavra reservada foi abreviado para del
+// Delete por ser uma palavra reservada foi abreviado para del.
 
 //Função que cria um novo contato para a lista
 function create(){
@@ -30,45 +84,6 @@ function create(){
   my_modal.hide();
 }
 
-//Função que chama as informações especificas do contato escolhido
-function call(id) {
-  tablecontact.innerHTML = '';
-  fetch(`${API_URL}/contacts/${id}`)
-    .then(response => response.json())
-    .then((contact) => {
-      tablecontact.innerHTML +=
-        `
-          <tr class="text-end">
-            <td>
-              <div class="dropdown">
-                <button class="material-icons btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  menu
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li>
-                  <button class="dropdown-item text-warning font-monospace" onclick="buscar_peditar(${contact.id})" data-bs-toggle="modal" data-bs-target="#edit_modal">Editar</button>
-                  </li>
-                  <li><button class="dropdown-item text-danger font-monospace" onclick="del(${contact.id})">Excluir</button></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr rowspan="2">
-            <td><img class="icon img-fluid rounded" src="./icon.png" alt=""></td>
-          </tr>
-          <tr>
-            <td>${contact.name}</td>
-          </tr>
-          <tr>
-            <td>${contact.number}</td>
-          </tr>
-          <tr>
-            <td>${contact.address}</td>
-          </tr>
-          `
-    })
-}
-
 // Função para atualizar e mostrar lista ao usuario
 function read() {
   list.innerHTML = '';
@@ -80,7 +95,7 @@ function read() {
           `
             <li class="d-flex me-2 ms-1">
               <input onclick="trash(this)" class="me-2" type="checkbox" data-check="action" value="${any_contact.id}">
-              <button class="list-button btn btn-dark text-start w-100 mb-2" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onclick="call(${any_contact.id})">
+              <button class="list-button btn btn-dark text-start w-100 mb-2" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onclick="profile(${any_contact.id})">
                 <i class="d-none">${any_contact.id}</i>
                 <i class="d-none">${any_contact.number}</i>
                 <i class="d-none">${any_contact.address}</i>
@@ -93,17 +108,7 @@ function read() {
     });
 }
 
-function buscar_peditar(id){
-  fetch(`${API_URL}/contacts/${id}`)
-      .then(response => response.json())
-      .then(newcontact => {
-          edit_id.value = newcontact.id;
-          edit_n.value = newcontact.name;
-          edit_number.value = newcontact.number;
-          edit_address.value = newcontact.address;
-      });
-}
-
+//Função que atualizará os dados presentes na API 
 function update(){
   event.preventDefault();
   
@@ -122,7 +127,9 @@ function update(){
   })
     .then(response => response.json())
     .then(() => read())
-    .then(() => call(edit_id.value))
+    .then(() => profile(edit_id.value))
+
+  my_modal2.hide();
 }
 
 // Função para deletar o contato.
