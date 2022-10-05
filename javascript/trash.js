@@ -6,18 +6,25 @@ function checkall(){
 
     if(main_check.checked){
         btn_trash.style.display='block'
-        if(btn_trash.style.display='block'){
-            btn_add.style.paddingLeft='12.4vw'
-            btn_add.classList.add('animate__animated')
-            btn_add.classList.add('animate__slideInLeft')
-        }
+        btn_add.classList.add('active')
+
+        // if(btn_trash.style.display='block'){
+        //     btn_add.style.paddingLeft='12.4vw'
+        //     btn_add.classList.add('animate__animated')
+        //     btn_add.classList.add('animate__slideInLeft')
+        // }
     }else{
         btn_trash.style.display='none'
-        if(btn_trash.style.display='none'){
-            btn_add.style.paddingLeft=''
-            btn_add.classList.remove('animate__animated')
-            btn_add.classList.remove('animate__slideInLeft')
-        }
+        btn_add.classList.remove('active')
+
+
+
+
+        // if(btn_trash.style.display='none'){
+        //     btn_add.style.paddingLeft=''
+        //     btn_add.classList.remove('animate__animated')
+        //     btn_add.classList.remove('animate__slideInLeft')
+        // }
     }
 }
 
@@ -25,18 +32,25 @@ function trash(element){
     console.log(element.checked);
     if(element.checked){
         btn_trash.style.display='block'
-        if(btn_trash.style.display='block'){
-            btn_add.style.paddingLeft='12.4vw'
-            btn_add.classList.add('animate__animated')
-            btn_add.classList.add('animate__slideInLeft')
-        }
+
+
+
+
+        // if(btn_trash.style.display='block'){
+        //     btn_add.style.paddingLeft='12.4vw'
+        //     btn_add.classList.add('animate__animated')
+        //     btn_add.classList.add('animate__slideInLeft')
+        // }
     }else{
         btn_trash.style.display='none'
-        if(btn_trash.style.display='none'){
-            btn_add.style.paddingLeft=''
-            btn_add.classList.remove('animate__animated')
-            btn_add.classList.remove('animate__slideInLeft')
-        }
+
+
+
+        // if(btn_trash.style.display='none'){
+        //     btn_add.style.paddingLeft=''
+        //     btn_add.classList.remove('animate__animated')
+        //     btn_add.classList.remove('animate__slideInLeft')
+        // }
     }
 }
 

@@ -1,6 +1,8 @@
 const API_URL = "http://localhost:8000";
 const collapseElementList = document.querySelectorAll('.collapse');
-const x = document.querySelectorAll('[data-bs-dismiss="modal"]');
+const my_modal = new bootstrap.Modal(document.getElementById('exampleModal'))
+
+// const x = document.querySelectorAll('[data-bs-dismiss="modal"]');
 // Create, Read, Update e Delete abaixo, respectivamente.
 // Delete por ser uma palavra reservada foi abreviado para del
 
@@ -25,7 +27,7 @@ function create(){
     .then(() => read());
 
   form_add.reset();
-  x.dispatchEvent(new Event('click'));
+  my_modal.hide();
 }
 
 //Função que chama as informações especificas do contato escolhido
@@ -118,7 +120,7 @@ function update(){
         'Content-Type': 'application/json'
     }
   })
-    .then( async response => response.json())
+    .then(response => response.json())
     .then(() => read())
     .then(() => call(edit_id.value))
 }
@@ -141,4 +143,3 @@ async function del(id){
 }
 
 read();
-call();

@@ -18,10 +18,12 @@
                     <input type="text" onkeyup="search()" id="search_input" class="input-form w-100 border-0 p-1" placeholder="Username" aria-label="Username">
                     <button class="search-button p-1 border-0 material-icons" type="submit">search</button>
                 </div>
-                <div class="d-flex ">
-                  <input onclick="checkall()" class="ms-1" type="checkbox" id="main_check">
-                  <button onclick="remove_selectedtrash()" id="btn_trash" class="btn btn-trash text-light border-0 fs-2 material-icons">delete</button>
-                  <button id="btn_add" class="btn btn-add text-light border-0 fs-2 material-icons" data-bs-toggle="modal" data-bs-target="#exampleModal">add</button>
+                <div class="d-flex">
+                  <div class="actions">
+                    <input onclick="checkall()" class="ms-1" type="checkbox" id="main_check">
+                    <button onclick="remove_selectedtrash()" id="btn_trash" class="btn btn-trash text-light border-0 fs-2 material-icons">delete</button>
+                    <button id="btn_add" class="btn btn-add text-light border-0 fs-2 material-icons" data-bs-toggle="modal" data-bs-target="#exampleModal">add</button>
+                  </div>
                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -30,12 +32,12 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form onsubmit="create()" id="form_add" class="d-flex flex-column">
-                          <input type="hidden" id="id">
-                            <input class="form-control mb-2" id="n" type="text" placeholder="Nome" required>
-                            <input class="form-control mb-2" id="number" type="text" minlength="9" maxlength="11" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Numero" required>
-                            <input class="form-control" id="address" type="text" placeholder="Endereço" required>
-                            <input type="hidden" id="id">
-                            <div class="modal-footer">
+                          <div class="modal-body">
+                              <input class="form-control mb-2" id="n" type="text" placeholder="Nome" required>
+                              <input class="form-control mb-2" id="number" type="text" minlength="9" maxlength="11" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Numero" required>
+                              <input class="form-control" id="address" type="text" placeholder="Endereço" required>
+                          </div>
+                          <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                             <button type="submit" class="btn btn-primary refresh">Adicionar</button>
                           </div>
